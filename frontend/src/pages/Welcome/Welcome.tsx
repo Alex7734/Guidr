@@ -20,11 +20,11 @@ function Welcome() {
 
   return (
     <>
-      <Meta title="Welcome" />
+      <Meta title="DocQT" />
       <FullSizeCenteredFlexBox flexDirection={isPortrait ? 'column' : 'row'}>
-        <FileCard></FileCard>
-        <FileCard></FileCard>
-        <FileCard></FileCard>
+        <FileCard name={"Aviz epidemiologic"} date={"07.04.2023"} description={"Aliquam ut porttitor leo a diam sollicitudin tempor id eu. Eget mauris pharetra et ultrices neque ornare aenean. Pellentesque id nibh tortor id aliquet. "}></FileCard>
+        <FileCard name={"Adeverinta medicala"} date={"01.04.2023"} description={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et pharetra pharetra massa massa ultricies mi quis. "}></FileCard>
+        <FileCard name={"Reta boala cronica"} date={"22.03.2023"} description={"Vitae tortor condimentum lacinia quis vel eros donec ac odio. Ut pharetra sit amet aliquam id."}></FileCard>
       </FullSizeCenteredFlexBox>
     </>
   );

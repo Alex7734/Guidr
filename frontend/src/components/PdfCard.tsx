@@ -1,7 +1,13 @@
 import { useState } from "react";
 import "./FileCard.css";
 
-export default function FileCard() {
+interface Props{
+  name: string,
+  date: string,
+  description: string
+}
+
+export default function FileCard(props: Props) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const handleExpandClick = () => {
@@ -11,9 +17,9 @@ export default function FileCard() {
   return (
     <div className="card">
       <div className="card-body">
-        <div className="header">Title</div>
-        <div className="date">12.12.2022</div>
-        <div className="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque blanditiis eos asperiores ad culpa! Perspiciatis reiciendis dolor illum, non magnam exercitationem tempore asperiores eum laborum iste quia impedit excepturi voluptatem?</div>
+        <div className="header">{props.name}</div>
+        <div className="date">{props.date}</div>
+        <div className="description">{props.description}</div>
         <div className="row">
         <button className="btn btn-primary">
           <a
