@@ -23,6 +23,8 @@ function Welcome() {
       <Meta title="Welcome" />
       <FullSizeCenteredFlexBox flexDirection={isPortrait ? 'column' : 'row'}>
         <FileCard></FileCard>
+        <FileCard></FileCard>
+        <FileCard></FileCard>
       </FullSizeCenteredFlexBox>
     </>
   );

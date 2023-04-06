@@ -4,7 +4,6 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import { PDFViewer } from '@react-pdf/renderer';
 import { FullSizeCenteredFlexBox } from '@/components/styled';
 import { email, messages } from '@/config';
 import resetApp from '@/utils/reset-app';
