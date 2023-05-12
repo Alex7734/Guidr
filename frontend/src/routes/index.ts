@@ -12,7 +12,7 @@ const routes: Routes = {
   [Pages.Welcome]: {
     component: asyncComponentLoader(() => import('@/pages/Welcome')),
     path: '/',
-    title: 'Latest docs',
+    title: 'Maps',
     icon: HomeIcon,
   },
   [Pages.Page1]: {
