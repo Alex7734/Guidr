@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLock, faUser } from '@fortawesome/free-solid-svg-icons';
 import styles from './LogIn.module.css';
 import auth from './auth';
 
@@ -16,33 +18,40 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
     auth.password = password;
     onLogin(username, password);
   };
-
+  
   return (
-    <div className={styles.loginContainer}>
-      <img className = {styles.logo} src="/images/blue_text.svg" alt="Logo" />
-      <form onSubmit={handleLogin}>
-        <div className="formgroup">
-          <input
-            className={styles.input}
-            type="text"
-            id="username"
-            placeholder='Username'
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </div>
-        <div className={styles.formgroup}>
-          <input
-            className={styles.input}
-            type="password"
-            id="password"
-            placeholder='Password'
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <button className={styles.loginButton} type="submit">Login</button>
-      </form>
+    <div className={styles.Container}>
+      <head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:700" />
+      </head>
+      <div className={styles.loginContainer}>
+        <img className = {styles.logo} src="/images/blue_text.svg" alt="Logo" />
+        <form onSubmit={handleLogin}>
+          <div className="formgroup">
+            <FontAwesomeIcon icon={faUser} className={styles.icon} />
+            <FontAwesomeIcon icon={faLock} className={styles.icon2} />
+            <input
+              className={styles.input}
+              type="text"
+              id="username"
+              placeholder='Username'
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </div>
+          <div className={styles.formgroup}>
+            <input
+              className={styles.input}
+              type="password"
+              id="password"
+              placeholder='Password'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <button className={styles.loginButton} type="submit">Login</button>
+        </form>
+      </div>
     </div>
   );
 };
