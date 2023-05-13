@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './BurgerMenu.module.css';
+import style from './FloatingMenu.module.css';
 
 const BurgerMenu: React.FC = () => {
   return (

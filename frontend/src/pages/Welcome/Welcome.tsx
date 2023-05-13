@@ -9,7 +9,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import ReactDOMServer from 'react-dom/server';
 import { borderRadius } from '@mui/system';
 import SearchBar from '@/components/SearchBar/Searchbar';
-import BurgerMenu from '@/components/BurgerMenu/BurgerMenu';
+import BurgerMenu from '@/components/FloatingMenu/FloatingMenu';
 
 mapboxgl.accessToken =
   'pk.eyJ1IjoidHVkb3I5MDAiLCJhIjoiY2xoa3cyb292MHc1aDNucXB5cnJmOWdtMCJ9.-WGWKDZihxwHtun9LaZWTw';
