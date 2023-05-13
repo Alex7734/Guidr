@@ -6,6 +6,7 @@ import turf from '@turf/turf';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import SearchBar from '@/components/SearchBar/Searchbar';
 
 mapboxgl.accessToken =
   'pk.eyJ1IjoidHVkb3I5MDAiLCJhIjoiY2xoa3cyb292MHc1aDNucXB5cnJmOWdtMCJ9.-WGWKDZihxwHtun9LaZWTw';
@@ -67,6 +68,9 @@ const Map = () => {
       {/* <div className="sidebar">
         Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
       </div> */}
+      <SearchBar onSearch={function (searchTerm: string): void {
+                throw new Error('Function not implemented.');
+      } } />
       <div ref={mapContainer} style={{ position: 'fixed', top: 55, left: 0, right: 0, bottom: 0 }} />
     </div>
   );
