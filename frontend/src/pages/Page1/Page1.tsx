@@ -10,7 +10,6 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 
 import Meta from '@/components/Meta';
 import SearchBar from '@/components/SearchBar/Searchbar';
-import BurgerMenu from '@/components/FloatingMenu/FloatingMenu';
 
 interface DrawEvent {
   type: string;
@@ -92,7 +91,6 @@ function Page1() {
           <pre>{JSON.stringify(polygonData, null, 2)}</pre>
         </div>
       )} */}
-      <BurgerMenu /> 
     </>
   );
 }
