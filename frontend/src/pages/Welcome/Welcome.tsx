@@ -1,33 +1,70 @@
-import Meta from '@/components/Meta';
-import { FullSizeCenteredFlexBox } from '@/components/styled';
-import useOrientation from '@/hooks/useOrientation';
+import React, { useEffect, useRef, useState } from 'react';
+import mapboxgl from 'mapbox-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
-import muiLogo from './logos/mui.svg';
-import pwaLogo from './logos/pwa.svg';
-import reactLogo from './logos/react_ed.svg';
-import recoilLogo from './logos/recoil.svg';
-import rrLogo from './logos/rr.svg';
-import tsLogo from './logos/ts.svg';
-import viteLogo from './logos/vite.svg';
-import { Image } from './styled';
-import FileCard from '@/components/PdfCard';
+mapboxgl.accessToken = 'pk.eyJ1IjoidHVkb3I5MDAiLCJhIjoiY2xoa3cyb292MHc1aDNucXB5cnJmOWdtMCJ9.-WGWKDZihxwHtun9LaZWTw';
 
-function Welcome() {
-  const isPortrait = useOrientation();
+const Map = () => {
+  const mapContainer = useRef(null);
+  const [lng, setLng] = useState(21.22571);
+  const [lat, setLat] = useState(45.75372);
+  const [zoom, setZoom] = useState(13);
 
-  const width = isPortrait ? '40%' : '30%';
-  const height = isPortrait ? '30%' : '40%';
+  useEffect(() => {
+    if (!mapContainer.current) return;
+
+    const map = new mapboxgl.Map({
+      container: mapContainer.current,
+      style: 'mapbox://styles/mapbox/streets-v12',
+      center: [lng, lat],
+      zoom: zoom
+    });
+
+    map.on('move', () => {
+      setLng(parseFloat(map.getCenter().lng.toFixed(4)));
+      setLat(parseFloat(map.getCenter().lat.toFixed(4)));
+      setZoom(parseFloat(map.getZoom().toFixed(2)));
+    });
+
+    const marker1 = new mapboxgl.Marker().setLngLat([21.240408, 45.745693]).addTo(map);
+
+    const popup = new mapboxgl.Popup({ closeOnClick: false, closeButton: false })
+      .setHTML('<h3>Marker 1</h3><p>This is marker 1</p>');
+
+    marker1.setPopup(popup);
+
+    // Add an event listener to the marker's DOM element
+    marker1.getElement().addEventListener('click', () => {
+      if (marker1.getPopup().isOpen()) {
+        marker1.getPopup().remove();
+      } else {
+        marker1.togglePopup();
+      }
+    });
+
+    return () => {
+      marker1.remove();
+      map.remove();
+    };
+  }, []);
 
   return (
-    <>
-      <Meta title="DocQT" />
-      <FullSizeCenteredFlexBox flexDirection={isPortrait ? 'column' : 'row'}>
-        <FileCard name={"Aviz epidemiologic"} date={"07.04.2023"} description={"Aliquam ut porttitor leo a diam sollicitudin tempor id eu"}></FileCard>
-        <FileCard name={"Adeverinta medicala"} date={"01.04.2023"} description={"Lorem ipsum dolor sit amet, consectetur adipiscing eli. "}></FileCard>
-        <FileCard name={"Reta boala cronica"} date={"22.03.2023"} description={"Vitae tortor condimentum lacinia quis vel eros donec ac odio. "}></FileCard>
-      </FullSizeCenteredFlexBox>
-    </>
+    <div>
+      <div className="sidebar">
+        Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
+      </div>
+      <div ref={mapContainer} style={{ width: '100%', height: '400px' }} />
+    </div>
+  );
+};
+
+function App() {
+  return (
+    <div>
+      <h1>Cea mai Smekera Harta a Timisoarei</h1>
+      <Map />
+    </div>
   );
 }
 
-export default Welcome;
+export default App;
