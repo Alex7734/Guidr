@@ -28,6 +28,12 @@ const routes: Routes = {
     title: 'Notifications',
     icon: AddTaskIcon,
   },
+  [Pages.Page1]: {
+    component: asyncComponentLoader(() => import('@/pages/Page1')),
+    path: '/page-1',
+    title: 'Create Area',
+    icon: GitHubIcon,
+  },
   [Pages.AccountScreen]: {
     component: asyncComponentLoader(() => import('@/pages/AccountsScreen')),
     path: '/AccountScreen',
@@ -39,12 +45,7 @@ const routes: Routes = {
     path: '*',
     title: '',
   },
-  [Pages.Page1]: {
-    component: asyncComponentLoader(() => import('@/pages/Page1')),
-    path: '/page-1',
-    title: '',
-    icon: GitHubIcon,
-  },
+  
 };
 
 export default routes;
