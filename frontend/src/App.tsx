@@ -41,8 +41,11 @@ function App() {
             <SW />
             <BrowserRouter>
               <Header />
-              <SearchBarTest />
+              <SearchBar onSearch={function (searchTerm: string): void {
+                throw new Error('Function not implemented.');
+              } } />
               <Sidebar />
+             
               <Pages />
               <BurgerMenu />
             </BrowserRouter>
