@@ -25,7 +25,7 @@ const Map = () => {
 
     const map = new mapboxgl.Map({
       container: mapContainer.current,
-      style: 'mapbox://styles/mapbox/streets-v12',
+      style: 'mapbox://styles/mapbox/light-v11',
       center: [lng, lat],
       zoom: zoom,
       maxBounds: bounds, 
