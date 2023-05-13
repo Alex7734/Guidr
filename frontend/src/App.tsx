@@ -15,6 +15,7 @@ import Login from './components/LogIn/LogIn';
 import SplashScreen from './components/SplashScreen/SplashScreen';
 import SearchBarTest from './components/SearchBar/SearchbarTest';
 import SearchBar from './components/SearchBar/Searchbar';
+import BurgerMenu from './components/BurgerMenu/BurgerMenu';
 
 
 function App() {
@@ -41,8 +42,11 @@ function App() {
             <SW />
             <BrowserRouter>
               <Header />
-              <SearchBarTest />
+              <SearchBar onSearch={function (searchTerm: string): void {
+                throw new Error('Function not implemented.');
+              } } />
               <Sidebar />
+             
               <Pages />
               <BurgerMenu />
             </BrowserRouter>
