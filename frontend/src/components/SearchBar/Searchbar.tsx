@@ -21,7 +21,11 @@ const SearchBar = ({ onSearch }: SearchBarProps) => {
 
   return (
     <div style={{
-      position: "absolute",
+      position: "fixed",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      marginLeft: -30,
       zIndex: "2", // set a high z-index value
     }}> 
     <div className="search-bar-container">
