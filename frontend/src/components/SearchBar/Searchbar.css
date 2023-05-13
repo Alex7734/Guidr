@@ -4,8 +4,6 @@
     opacity: 0.85;
     margin-top: -20px;
     justify-content: flex-start; /* add this line */
-    margin-left: -13%;
-    padding-right: 13%;
   }
   
   .search-bar {
