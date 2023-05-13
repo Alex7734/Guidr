@@ -1,4 +1,4 @@
-import Collapsible from '@/components/DropdownMenu/DropdownMenu';
+import Collapsible from '@/components/Collapsible/CollapsibleMenu';
 import styler from './AreasScreen.module.css';
 
 function AreasScreen() {
