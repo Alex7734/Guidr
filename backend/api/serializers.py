@@ -1,6 +1,11 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
+from .models import Point
 
+class PointSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Point
+        fields = ['id', 'user', 'longitude', 'latitude', 'isInterestPoint']
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
