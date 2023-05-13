@@ -61,5 +61,9 @@ services:
       # (see https://docs.directus.io/self-hosted/config-options#general)
       # PUBLIC_URL: 'https://directus.example.com'
 
+      PUBLIC_URL: "http://localhost:5173" 
+      CORS_ENABLED: 'true'
+      CORS_ORIGIN: '*'
+
 networks:
   directus:

@@ -93,7 +93,7 @@ function Sidebar() {
             fontWeight: 700,
             lineHeight: '20px',
             color: 'rgba(97, 119, 239, 0.5)',
-          }}>Made by Serviciul IT from OSUT Cluj </p>
+          }}>Made with ❤️ by Serviciul IT from OSUT Cluj </p>
         </div>
       </div>
     </SwipeableDrawer>

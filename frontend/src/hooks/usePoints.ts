@@ -8,7 +8,7 @@ const usePoints = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:8055/items/points', {
+        const response = await fetch('http://127.0.0.1:8055/items/pins?limit=50', {
             method: 'GET',
             mode: 'cors',
         });
