@@ -1,7 +1,10 @@
 import Collapsible from '@/components/Collapsible/CollapsibleMenu';
 import styler from './NotificationsScreen.module.css';
+import React, { useState } from 'react';
+
 
 function NotificationsScreen() {
+  
   return (
     <>
       <div className={styler.MainContainer}>
@@ -13,8 +16,6 @@ function NotificationsScreen() {
         </a>
         <img src='/images/blue_text.svg' alt='Areas' className={styler.Image} />
         <p className={styler.Text}>Notifications</p>
-        
-        
       </div>
     </>
   );
