@@ -4,7 +4,7 @@ import {
   faChevronUp,
   faChevronDown
 } from "@fortawesome/free-solid-svg-icons";
-import styler from './DropdownMenu.module.css';
+import styler from './CollapsibleMenu.module.css';
 
 interface IProps {
   open?: boolean;
@@ -13,7 +13,7 @@ interface IProps {
 }
 
 const Collapsible: React.FC<IProps> = ({ open, children, content }: IProps) => {
-  const [isOpen, setIsOpen] = useState<boolean>(open || false);
+  const [isOpen, setIsOpen] = useState<boolean>(open ?? true);
 
   const handleFilterOpening = () => {
     setIsOpen((prev: boolean) => !prev);

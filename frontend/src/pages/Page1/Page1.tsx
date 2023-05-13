@@ -10,7 +10,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 
 import Meta from '@/components/Meta';
 import SearchBar from '@/components/SearchBar/Searchbar';
-import BurgerMenu from '@/components/BurgerMenu/BurgerMenu';
+import BurgerMenu from '@/components/FloatingMenu/FloatingMenu';
 
 interface DrawEvent {
   type: string;
