@@ -12,33 +12,28 @@ const routes: Routes = {
   [Pages.Welcome]: {
     component: asyncComponentLoader(() => import('@/pages/Welcome')),
     path: '/',
-    title: 'Maps',
+    title: 'All events',
     icon: HomeIcon,
   },
   [Pages.Page1]: {
     component: asyncComponentLoader(() => import('@/pages/Page1')),
     path: '/page-1',
-    title: 'Adeverinte',
+    title: 'My zone',
     icon: GitHubIcon,
   },
   [Pages.Page2]: {
     component: asyncComponentLoader(() => import('@/pages/Page2')),
     path: '/page-2',
-    title: 'Retete',
+    title: 'Alerts',
     icon: AddTaskIcon,
   },
   [Pages.Page3]: {
     component: asyncComponentLoader(() => import('@/pages/Page3')),
     path: '/page-3',
-    title: 'Arhiva',
+    title: 'Activities',
     icon: TerrainIcon,
   },
-  [Pages.Page4]: {
-    component: asyncComponentLoader(() => import('@/pages/Page4')),
-    path: '/page-4',
-    title: 'Alergii',
-    icon: BugReportIcon,
-  },
+
   [Pages.NotFound]: {
     component: asyncComponentLoader(() => import('@/pages/NotFound')),
     path: '*',

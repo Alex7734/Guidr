@@ -7,6 +7,7 @@ import type { SnackbarKey } from 'notistack';
 import { useRegisterSW } from 'virtual:pwa-register/react';
 
 import useNotifications from '@/store/notifications';
+
 function SW() {
   const [, notificationsActions] = useNotifications();
   const notificationKey = useRef<SnackbarKey | null>(null);

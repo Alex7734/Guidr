@@ -1,8 +1,14 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
+import MapboxDraw from '@mapbox/mapbox-gl-draw';
+import '@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css';
+import turf from '@turf/turf';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
-mapboxgl.accessToken = 'pk.eyJ1IjoidHVkb3I5MDAiLCJhIjoiY2xoa3cyb292MHc1aDNucXB5cnJmOWdtMCJ9.-WGWKDZihxwHtun9LaZWTw';
+mapboxgl.accessToken =
+  'pk.eyJ1IjoidHVkb3I5MDAiLCJhIjoiY2xoa3cyb292MHc1aDNucXB5cnJmOWdtMCJ9.-WGWKDZihxwHtun9LaZWTw';
 
 const Map = () => {
   const mapContainer = useRef(null);
@@ -17,7 +23,16 @@ const Map = () => {
       container: mapContainer.current,
       style: 'mapbox://styles/mapbox/streets-v12',
       center: [lng, lat],
-      zoom: zoom
+      zoom: zoom,
+    });
+
+    const draw = new MapboxDraw({
+      displayControlsDefault: false,
+      controls: {
+        polygon: true,
+        trash: true,
+      },
+      defaultMode: 'draw_polygon',
     });
 
     map.on('move', () => {
@@ -28,19 +43,11 @@ const Map = () => {
 
     const marker1 = new mapboxgl.Marker().setLngLat([21.240408, 45.745693]).addTo(map);
 
-    const popup = new mapboxgl.Popup({ closeOnClick: false, closeButton: false })
-      .setHTML('<h3>Marker 1</h3><p>This is marker 1</p>');
+    const popup = new mapboxgl.Popup({ closeOnClick: true, closeButton: true }).setHTML(
+      '<h3 style="color:black;">Marker 1</h3><p style="color:black;">This is marker 1</p>',
+    );
 
     marker1.setPopup(popup);
-
-    // Add an event listener to the marker's DOM element
-    marker1.getElement().addEventListener('click', () => {
-      if (marker1.getPopup().isOpen()) {
-        marker1.getPopup().remove();
-      } else {
-        marker1.togglePopup();
-      }
-    });
 
     return () => {
       marker1.remove();

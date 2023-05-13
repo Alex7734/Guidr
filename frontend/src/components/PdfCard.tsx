@@ -1,10 +1,11 @@
-import { useState } from "react";
-import "./FileCard.css";
+import { useState } from 'react';
 
-interface Props{
-  name: string,
-  date: string,
-  description: string
+import './FileCard.css';
+
+interface Props {
+  name: string;
+  date: string;
+  description: string;
 }
 
 export default function FileCard(props: Props) {
@@ -21,18 +22,18 @@ export default function FileCard(props: Props) {
         <div className="date">{props.date}</div>
         <div className="description">{props.description}</div>
         <div className="row">
-        <button className="btn btn-primary">
-          <a
-            href="https://drive.google.com/file/d/1YZCXksJWrsGvvCPHWTDz4Y8CeWFA1BAM/view"
-            target="_blank"
-            rel="noreferrer"
+          <button className="btn btn-primary">
+            <a
+              href="https://drive.google.com/file/d/1YZCXksJWrsGvvCPHWTDz4Y8CeWFA1BAM/view"
+              target="_blank"
+              rel="noreferrer"
             >
-            Download
-          </a>
-        </button>
-        <button className="btn btn-primary" onClick={handleExpandClick}>
+              Download
+            </a>
+          </button>
+          <button className="btn btn-primary" onClick={handleExpandClick}>
             Expand
-        </button>
+          </button>
         </div>
       </div>
       {isExpanded && (

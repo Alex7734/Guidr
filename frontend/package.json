@@ -22,6 +22,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
+    "@mapbox/mapbox-gl-draw": "^1.4.1",
     "@mui/icons-material": "^5.10.6",
     "@mui/lab": "5.0.0-alpha.100",
     "@mui/material": "^5.10.6",
@@ -29,6 +30,7 @@
     "@mui/utils": "^5.10.6",
     "@pdftron/webviewer": "^10.0.0",
     "@react-pdf/renderer": "^3.1.9",
+    "@turf/turf": "^6.5.0",
     "is-mobile": "^3.1.1",
     "leaflet": "^1.9.3",
     "notistack": "^2.0.5",

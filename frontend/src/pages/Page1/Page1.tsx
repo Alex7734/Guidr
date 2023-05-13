@@ -1,15 +1,93 @@
+import { useCallback, useEffect, useRef, useState } from 'react';
+
 import Typography from '@mui/material/Typography';
 
+import * as turf from '@turf/turf';
+import MapboxDraw from '@mapbox/mapbox-gl-draw';
+import '@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css';
+import mapboxgl from 'mapbox-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
+
 import Meta from '@/components/Meta';
-import { FullSizeCenteredFlexBox } from '@/components/styled';
+
+interface DrawEvent {
+  type: string;
+}
+
+interface DrawInstance {
+  getAll: () => any;
+}
 
 function Page1() {
+  const mapContainer = useRef(null);
+  const [lng, setLng] = useState<number>(21.22571);
+  const [lat, setLat] = useState<number>(45.75372);
+  const [zoom, setZoom] = useState<number>(13);
+  const [polygonData, setPolygonData] = useState(null);
+
+  const updateArea = useCallback(
+    (e: DrawEvent, draw: DrawInstance) => {
+      const data = draw.getAll();
+      console.log('data', data);
+      setPolygonData(data); // Save polygon data to state
+      const answer = document.getElementById('calculated-area');
+      if (data.features.length > 0) {
+        const area = turf.area(data);
+        if (answer)
+          answer.innerHTML = `<p><strong>${JSON.stringify(data)}</strong></p><p>${JSON.stringify(
+            polygonData,
+          )}</p>`;
+      } else {
+        if (answer) answer.innerHTML = '';
+        if (e.type !== 'draw.delete') alert('Click the map to draw a polygon.');
+      }
+    },
+    [polygonData],
+  );
+
+  useEffect(() => {
+    console.log('polygonData changed', polygonData);
+  }, [polygonData]);
+
+  useEffect(() => {
+    if (!mapContainer.current) return;
+
+    mapboxgl.accessToken =
+      'pk.eyJ1IjoidHVkb3I5MDAiLCJhIjoiY2xoa3cyb292MHc1aDNucXB5cnJmOWdtMCJ9.-WGWKDZihxwHtun9LaZWTw';
+
+    const map = new mapboxgl.Map({
+      container: mapContainer.current,
+      style: 'mapbox://styles/mapbox/streets-v12',
+      center: [lng, lat],
+      zoom: zoom,
+    });
+
+    const draw = new MapboxDraw({
+      displayControlsDefault: false,
+      controls: {
+        polygon: true,
+        trash: true,
+      },
+      defaultMode: 'draw_polygon',
+    });
+
+    map.addControl(draw);
+
+    map.on('draw.create', (e) => updateArea(e, draw));
+    map.on('draw.delete', (e) => updateArea(e, draw));
+    map.on('draw.update', (e) => updateArea(e, draw));
+
+    return () => map.remove();
+  }, [updateArea]);
+
   return (
     <>
       <Meta title="page 1" />
-      <FullSizeCenteredFlexBox>
-        <Typography variant="h3">Page 1</Typography>
-      </FullSizeCenteredFlexBox>
+      <Typography variant="h6" style={{ marginBottom: '16px' }}>
+        Click the map to draw a polygon.
+      </Typography>
+      <div ref={mapContainer} style={{ width: '100%', height: '400px' }} />
+      <div id="calculated-area" />
     </>
   );
 }
