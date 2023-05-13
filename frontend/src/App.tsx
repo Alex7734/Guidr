@@ -13,7 +13,8 @@ import SW from '@/sections/SW';
 import Sidebar from '@/sections/Sidebar';
 import Login from './components/LogIn/LogIn';
 import SplashScreen from './components/SplashScreen/SplashScreen';
-import BurgerMenu from './components/BurgerMenu/BurgerMenu';
+import SearchBarTest from './components/SearchBar/SearchbarTest';
+import SearchBar from './components/SearchBar/Searchbar';
 
 
 function App() {
@@ -33,13 +34,14 @@ function App() {
   return (
     <Fragment>
       <CssBaseline />
-      {showSplashScreen ? <SplashScreen /> : 
+      {showSplashScreen ? <SplashScreen />  : 
         loggedIn ? (
           <Fragment>
             <Notifications />
             <SW />
             <BrowserRouter>
               <Header />
+              <SearchBarTest />
               <Sidebar />
               <Pages />
               <BurgerMenu />
@@ -51,3 +53,5 @@ function App() {
 }
 
 export default withErrorHandler(App, AppErrorBoundaryFallback);
+
+
