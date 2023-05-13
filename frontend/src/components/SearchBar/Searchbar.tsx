@@ -4,6 +4,8 @@ import "./Searchbar.css";
 import zIndex from "@mui/material/styles/zIndex";
 import Sidebar from "@/sections/Sidebar";
 import useSidebar from "@/store/sidebar";
+import MenuButton from "@/components/MenuButton/MenuButton";
+
 
 interface SearchBarProps {
   onSearch: (searchTerm: string) => void;
@@ -20,7 +22,6 @@ const SearchBar = ({ onSearch }: SearchBarProps) => {
     event.preventDefault();
     onSearch(searchTerm);
   };
-  const [, sidebarActions] = useSidebar();
   return (
     <div style={{
       position: "fixed",
@@ -31,9 +32,8 @@ const SearchBar = ({ onSearch }: SearchBarProps) => {
       zIndex: "4", // set a high z-index value
     }}> 
     <div className="search-bar-container">
-    <button className="menu-icon-container">
-      <FaBars size={40} color="#D4DCFA" onClick={sidebarActions.toggle} />
-    </button>
+    <MenuButton />
+
   <div className="search-bar">
   <div className="search-icon">
         <FaSearch size={30} color="#6177EF" />
