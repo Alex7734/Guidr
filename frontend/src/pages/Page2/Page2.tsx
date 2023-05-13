@@ -46,7 +46,7 @@ function Page2() {
 
     const map = new mapboxgl.Map({
       container: mapContainer.current,
-      style: 'mapbox://styles/mapbox/streets-v12',
+      style: 'mapbox://styles/mapbox/light-v11',
       center: [lng, lat],
       zoom: zoom,
       maxBounds: bounds
@@ -75,7 +75,7 @@ function Page2() {
           <pre>{JSON.stringify(markerCoordinates, null, 2)}</pre>
         
     
-      <div ref={mapContainer} style={{ position: 'fixed', top: 300, left: 0, right: 0, bottom: 0 }} />
+      <div ref={mapContainer} style={{ position: 'fixed', top: 400, left: 0, right: 0, bottom: 0 }} />
       
     </>
   );
