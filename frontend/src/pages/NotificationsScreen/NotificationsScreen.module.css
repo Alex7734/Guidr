@@ -43,36 +43,19 @@
     left: 45%;
 }
 
-.Collapsible{
+.Switch{
     position: fixed;
     top: 40%;
-    flex-direction: row;
+    left: 10%;
     display: flex;
-}
-
-.Collapsible2{
-    position: fixed;
-    top: 70%;
     flex-direction: row;
-    display: flex;
-}
-
-.Button2{
-    background-color: #FAFEFE;
-    color: #6177EF;
     width: 366px;
     height: 66px;
-    margin-left: 40px;
+    background-color: #6177EF;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
-    display: flex;
-    flex-direction: row;
-    border: none;
-    box-shadow: 0px 3px 12px 2px #A6CBEB;  
-    z-index: 4;
-    position: fixed;
-    justify-content: center;
     align-items: center;
-  }
+    justify-content: center;
+}
