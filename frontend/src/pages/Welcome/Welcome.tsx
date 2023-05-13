@@ -46,6 +46,8 @@ const Map = () => {
       setZoom(parseFloat(map.getZoom().toFixed(2)));
     });
 
+    map.setMinZoom(11.01);
+
     const marker1 = new mapboxgl.Marker().setLngLat([21.240408, 45.745693]).addTo(map);
 
     const popup = new mapboxgl.Popup({ closeOnClick: true, closeButton: true }).setHTML(
@@ -59,21 +61,21 @@ const Map = () => {
       map.remove();
     };
   }, []);
-
+  
   return (
     <div>
-      <div className="sidebar">
+      {/* <div className="sidebar">
         Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
-      </div>
-      <div ref={mapContainer} style={{ width: '100%', height: '400px' }} />
+      </div> */}
+      <div ref={mapContainer} style={{ position: 'fixed', top: 55, left: 0, right: 0, bottom: 0 }} />
     </div>
   );
+  
 };
 
 function App() {
   return (
     <div>
-      <h1>Cea mai Smekera Harta a Timisoarei</h1>
       <Map />
     </div>
   );

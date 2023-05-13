@@ -75,18 +75,18 @@ function Page1() {
 
   return (
     <>
-      <Meta title="page 1" />
+      {/* <Meta title="page 1" />
       <Typography variant="h6" style={{ marginBottom: '16px' }}>
         Click the map to draw a polygon.
-      </Typography>
-      <div ref={mapContainer} style={{ width: '100%', height: '400px' }} />
-      <div id="calculated-area" />
+      </Typography> */}
+      <div ref={mapContainer} style={{ position: 'fixed', top: 55, left: 0, right: 0, bottom: 0 }} />
+      {/* <div id="calculated-area" />
       {polygonData && (
         <div>
           <h2>Polygon Data:</h2>
           <pre>{JSON.stringify(polygonData, null, 2)}</pre>
         </div>
-      )}
+      )} */}
     </>
   );
 }

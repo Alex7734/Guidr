@@ -44,6 +44,7 @@ function App() {
               <SearchBarTest />
               <Sidebar />
               <Pages />
+              <BurgerMenu />
             </BrowserRouter>
           </Fragment>
         ) : ( <Login onLogin={handleLogin} /> )}

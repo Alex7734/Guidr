@@ -64,17 +64,19 @@ function Page2() {
 
   return (
     <>
-      <Meta title="page 2" />
+      {/* <Meta title="page 2" />
       <Typography variant="h6" style={{ marginBottom: '16px' }}>
         Click on the map to set a marker.
-      </Typography>
-      <div ref={mapContainer} style={{ width: '100%', height: '400px' }} />
-      {markerCoordinates && (
-        <div>
+      </Typography> */}
+      <p> Marker nu merge</p> 
+      
+        
           <h2>Marker Coordinates:</h2>
           <pre>{JSON.stringify(markerCoordinates, null, 2)}</pre>
-        </div>
-      )}
+        
+    
+      <div ref={mapContainer} style={{ position: 'fixed', top: 300, left: 0, right: 0, bottom: 0 }} />
+      
     </>
   );
 }
