@@ -33,7 +33,7 @@ const routes: Routes = {
     title: 'Activities',
     icon: TerrainIcon,
   },
-  [Pages.Page4]: { // Add the configuration for Pages.Page4
+  [Pages.NotFound]: { // Add the configuration for Pages.Page4
     component: asyncComponentLoader(() => import('@/pages/Page4')),
     path: '/page-4',
     title: 'New Page',
