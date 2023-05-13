@@ -4,7 +4,7 @@ import {
   faChevronUp,
   faChevronDown
 } from "@fortawesome/free-solid-svg-icons";
-import styler from './DropdownMenu.module.css';
+import styler from './CollapsibleMenu.module.css';
 
 interface IProps {
   open?: boolean;
