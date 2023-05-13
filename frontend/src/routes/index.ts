@@ -33,11 +33,16 @@ const routes: Routes = {
     title: 'Edit account',
     icon: TerrainIcon,
   },
-  [Pages.NotFound]: { // Add the configuration for Pages.Page4
-    component: asyncComponentLoader(() => import('@/pages/Page4')),
-    path: '/page-4',
-    title: '',
+  [Pages.AreasScreen]: {
+    component: asyncComponentLoader(() => import('@/pages/AreasScreen')),
+    path: '/areas-screen',
+    title: 'AreasScreen',
     icon: BugReportIcon,
+  },
+  [Pages.NotFound]: {
+    component: asyncComponentLoader(() => import('@/pages/NotFound')),
+    path: '*',
+    title: 'Not Found',
   },
 };
 

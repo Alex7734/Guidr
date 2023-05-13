@@ -2,6 +2,8 @@ import { useState } from "react";
 import { FaBars, FaSearch } from "react-icons/fa";
 import "./Searchbar.css";
 import zIndex from "@mui/material/styles/zIndex";
+import Sidebar from "@/sections/Sidebar";
+import useSidebar from "@/store/sidebar";
 
 interface SearchBarProps {
   onSearch: (searchTerm: string) => void;
@@ -18,7 +20,7 @@ const SearchBar = ({ onSearch }: SearchBarProps) => {
     event.preventDefault();
     onSearch(searchTerm);
   };
-
+  const [, sidebarActions] = useSidebar();
   return (
     <div style={{
       position: "fixed",
@@ -26,13 +28,17 @@ const SearchBar = ({ onSearch }: SearchBarProps) => {
       justifyContent: "center",
       alignItems: "center",
       marginLeft: -30,
-      zIndex: "2", // set a high z-index value
+      zIndex: "4", // set a high z-index value
     }}> 
     <div className="search-bar-container">
+    <button className="menu-icon-container">
+      <FaBars size={40} color="#D4DCFA" onClick={sidebarActions.toggle} />
+    </button>
   <div className="search-bar">
   <div className="search-icon">
         <FaSearch size={30} color="#6177EF" />
       </div>
+      
     <form onSubmit={handleSubmit} style={{ flex: "1", border: "none" }}>
       
       <input
@@ -45,9 +51,7 @@ const SearchBar = ({ onSearch }: SearchBarProps) => {
     </form>
     
   </div>
-  <button className="menu-icon-container">
-      <FaBars size={40} color="#D4DCFA" />
-    </button>
+  
 </div>
 </div>
   );
