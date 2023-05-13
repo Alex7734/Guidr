@@ -41,7 +41,6 @@ function App() {
             <SW />
             <BrowserRouter>
               <Header />
-              <SearchBarTest />
               <Sidebar />
               <Pages />
               <BurgerMenu />

@@ -1,3 +1,3 @@
-import Page4 from './Page4';
+import AreasScreen from './AreasScreen';
 
-export default Page4;
+export default AreasScreen;
