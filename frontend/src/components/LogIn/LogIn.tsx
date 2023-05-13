@@ -18,6 +18,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
     auth.password = password;
     onLogin(username, password);
   };
+
   
   return (
     <div className={styles.Container}>
@@ -52,6 +53,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
           <button className={styles.loginButton} type="submit">Login</button>
         </form>
       </div>
+
     </div>
   );
 };
