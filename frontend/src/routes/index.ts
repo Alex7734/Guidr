@@ -45,18 +45,6 @@ const routes: Routes = {
     title: '',
     icon: GitHubIcon,
   },
-  [Pages.Page2]: {
-    component: asyncComponentLoader(() => import('@/pages/Page2')),
-    path: '/page-2',
-    title: '',
-    icon: AddTaskIcon,
-  },
-  [Pages.Page3]: {
-    component: asyncComponentLoader(() => import('@/pages/Page3')),
-    path: '/page-3',
-    title: '',
-    icon: TerrainIcon,
-  },
 };
 
 export default routes;
