@@ -24,6 +24,10 @@ function Page1() {
   const [lat, setLat] = useState<number>(45.75372);
   const [zoom, setZoom] = useState<number>(13);
   const [polygonData, setPolygonData] = useState(null);
+  const bounds = [
+    [21.148834380930737,45.70095987580634],
+    [21.319834380930737,45.80095987580634]
+  ]as mapboxgl.LngLatBoundsLike;
 
   const updateArea = useCallback(
     (e: DrawEvent, draw: DrawInstance) => {
@@ -49,6 +53,7 @@ function Page1() {
       style: 'mapbox://styles/mapbox/streets-v12',
       center: [lng, lat],
       zoom: zoom,
+      maxBounds: bounds
     });
 
     const draw = new MapboxDraw({
