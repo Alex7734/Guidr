@@ -15,7 +15,7 @@ function Sidebar() {
 
   return (
     <SwipeableDrawer
-      anchor="right"
+      anchor="left"
       open={isSidebarOpen}
       onClose={sidebarActions.close}
       onOpen={sidebarActions.open}

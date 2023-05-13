@@ -9,6 +9,8 @@ import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 import Meta from '@/components/Meta';
+import SearchBar from '@/components/SearchBar/Searchbar';
+import BurgerMenu from '@/components/BurgerMenu/BurgerMenu';
 
 interface DrawEvent {
   type: string;
@@ -79,6 +81,9 @@ function Page1() {
       <Typography variant="h6" style={{ marginBottom: '16px' }}>
         Click the map to draw a polygon.
       </Typography> */}
+            <SearchBar onSearch={function (searchTerm: string): void {
+                throw new Error('Function not implemented.');
+      } } />
       <div ref={mapContainer} style={{ position: 'fixed', top: 55, left: 0, right: 0, bottom: 0 }} />
       {/* <div id="calculated-area" />
       {polygonData && (
@@ -87,6 +92,7 @@ function Page1() {
           <pre>{JSON.stringify(polygonData, null, 2)}</pre>
         </div>
       )} */}
+      <BurgerMenu /> 
     </>
   );
 }
