@@ -7,6 +7,7 @@ router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
 router.register(r'points', views.PointViewSet)
+router.register(r'polygons', views.PolygonViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
