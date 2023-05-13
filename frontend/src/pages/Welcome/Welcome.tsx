@@ -9,12 +9,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import ReactDOMServer from 'react-dom/server';
 import { borderRadius } from '@mui/system';
 import SearchBar from '@/components/SearchBar/Searchbar';
-import BurgerMenu from '@/components/FloatingMenu/FloatingMenu';
-import styles from './popups.module.css';
-
-
-
-
+import BurgerMenu from '@/components/BurgerMenu/BurgerMenu';
 
 mapboxgl.accessToken =
   'pk.eyJ1IjoidHVkb3I5MDAiLCJhIjoiY2xoa3cyb292MHc1aDNucXB5cnJmOWdtMCJ9.-WGWKDZihxwHtun9LaZWTw';
@@ -24,8 +19,48 @@ const Map = () => {
   const [lng, setLng] = useState(21.22571);
   const [lat, setLat] = useState(45.75372);
   const [zoom, setZoom] = useState(13);
- 
- 
+  const [pointsData, setPointsData] = useState([]);
+
+  const bounds = [
+    [21.148834380930737,45.70095987580634],
+    [21.319834380930737,45.80095987580634]
+  ] as mapboxgl.LngLatBoundsLike;
+
+  useEffect(() => {
+    const points = localStorage.getItem('pointsData');
+    if (points) {
+      setPointsData(JSON.parse(points));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!mapContainer.current) return;
+
+    const map = new mapboxgl.Map({
+      container: mapContainer.current,
+      style: 'mapbox://styles/mapbox/light-v11',
+      center: [lng, lat],
+      zoom: zoom,
+      maxBounds: bounds,
+    });
+
+    pointsData.forEach((point) => {
+      if (point.location) {
+        const el = document.createElement('div');
+        el.className = 'marker';
+        el.style.backgroundColor = 'red';
+        el.style.width = '10px';
+        el.style.height = '10px';
+        el.style.borderRadius = '50%';
+    
+        new mapboxgl.Marker(el)
+          .setLngLat(point.location.coordinates)
+          .addTo(map);
+      }
+    });
+    
+
+  }, [pointsData]);
   
   //wraper is style pentru logoMarker_roadworks
   const logoMarker_roadworks_wrapper = document.createElement('div');
@@ -46,91 +81,17 @@ const Map = () => {
   //end of wraper is style pentru logoMarker_roadworks
 
 
-  //wraper is style pentru events
-  const logoMarker_events_wrapper = document.createElement('div');
-  logoMarker_events_wrapper.style.backgroundColor = '#24cbda';
-  logoMarker_events_wrapper.style.borderRadius = '70%';
-  logoMarker_events_wrapper.style.width = '40px';  
-  logoMarker_events_wrapper.style.height = '40px'; 
-  logoMarker_events_wrapper.style.display = 'flex';
-  logoMarker_events_wrapper.style.justifyContent = 'center';
-  logoMarker_events_wrapper.style.alignItems = 'center';
-  const logoMarker_events= document.createElement('div'); 
-  logoMarker_events.className = 'logoMarker_roadworks';
-  logoMarker_events.style.backgroundImage = 'url(public/images/party-horn-svgrepo-com.svg';
-  logoMarker_events.style.width = '30px';
-  logoMarker_events.style.height = '30px';  
-
-  logoMarker_events_wrapper.appendChild(logoMarker_events);
+  const popup_st= document.createElement('div');
 
 
-  //wrapper is style pentru power
-  const logoMarker_power_wrapper = document.createElement('div');
-  logoMarker_power_wrapper.style.backgroundColor = '#ffb221';
-  logoMarker_power_wrapper.style.borderRadius = '70%';
-  logoMarker_power_wrapper.style.width = '40px';  
-  logoMarker_power_wrapper.style.height = '40px'; 
-  logoMarker_power_wrapper.style.display = 'flex';
-  logoMarker_power_wrapper.style.justifyContent = 'center';
-  logoMarker_power_wrapper.style.alignItems = 'center';
-  const logoMarker_power= document.createElement('div'); 
-  logoMarker_power.className = 'logoMarker_roadworks';
-  logoMarker_power.style.backgroundImage = 'url(public/images/power-svgrepo-com.svg';
-  logoMarker_power.style.width = '30px';
-  logoMarker_power.style.height = '30px';  
-
-  logoMarker_power_wrapper.appendChild(logoMarker_power);
-
-
-
-
-  //wrapper is style pentru housing
-  const logoMarker_housing_wrapper = document.createElement('div');
-  logoMarker_housing_wrapper.style.backgroundColor = '#27da59';
-  logoMarker_housing_wrapper.style.borderRadius = '70%';
-  logoMarker_housing_wrapper.style.width = '40px';  
-  logoMarker_housing_wrapper.style.height = '40px'; 
-  logoMarker_housing_wrapper.style.display = 'flex';
-  logoMarker_housing_wrapper.style.justifyContent = 'center';
-  logoMarker_housing_wrapper.style.alignItems = 'center';
-  const logoMarker_housing= document.createElement('div'); 
-  logoMarker_housing.className = 'logoMarker_roadworks';
-  logoMarker_housing.style.backgroundImage = 'url(public/images/house-svgrepo-com.svg';
-  logoMarker_housing.style.width = '30px';
-  logoMarker_housing.style.height = '30px';  
-
-  logoMarker_housing_wrapper.appendChild(logoMarker_housing);
-
-
-  
-
-  const popupContent_roadworks1 = (
-    <div className={styles.popup}>
-  <p className={styles.popupRoadworksP1}>RoadWorks1</p>
-  <p className={styles.popupRoadworksP2}>Desription</p>
-</div>
-  );
-
-  
-  const popupContent_event1 = (
-    <div className={styles.popup}>
-      <p className={styles.popupEventsP1}> HackTM</p>
-      <p className={styles.popupEventsP2}> Hack The Capital!</p>
+  const popupContent = (
+    <div style={{ width: '200px', height: '100px' }}>
+      <h3 style={{ color: '#9E5454', margin: 0, textAlign: 'center', fontSize: '25px', lineHeight: '34px', fontWeight: '700', fontFamily: 'url(Guidr/frontend/public/Nunito/Nunito-VariableFont_wght.ttf)', fontStyle: 'normal' }}>Craft</h3>
+      <p style={{ color: '#BB9E9E', margin: 0, textAlign: 'center', fontSize: '16px', lineHeight: '17px', fontWeight: '500', fontFamily: 'url(Guidr/frontend/public/Nunito/Nunito-VariableFont_wght.ttf)', fontStyle: 'normal' }}>This is the Centrul Regional de Afaceri Timisoara</p>
     </div>
-  )
-
-
-
-
+  );
   
-  
-  
-  
- 
-  const bounds = [
-    [21.148834380930737,45.70095987580634],
-    [21.319834380930737,45.80095987580634]
-  ]as mapboxgl.LngLatBoundsLike;
+
 
   useEffect(() => {
     if (!mapContainer.current) return;
@@ -160,22 +121,18 @@ const Map = () => {
 
     map.setMinZoom(11.01);
 
-    const marker1 = new mapboxgl.Marker({element: logoMarker_roadworks_wrapper}).setLngLat([21.22571, 45.745693]).addTo(map);
-    const popup_roadworks1 = new mapboxgl.Popup({ closeOnClick: true, closeButton: true}).setDOMContent(document.createRange().createContextualFragment(ReactDOMServer.renderToString(popupContent_roadworks1))
-    );
-    
-    const marker2 = new mapboxgl.Marker({element: logoMarker_events_wrapper}).setLngLat([21.240408, 45.745693]).addTo(map);
-    const popup_events1 = new mapboxgl.Popup({ closeOnClick: true, closeButton: true}).setDOMContent(document.createRange().createContextualFragment(ReactDOMServer.renderToString(popupContent_event1))
+    const marker1 = new mapboxgl.Marker({element: logoMarker_roadworks_wrapper}).setLngLat([21.240408, 45.745693]).addTo(map);
+
+    const popup = new mapboxgl.Popup({ closeOnClick: true, closeButton: true}).setDOMContent(document.createRange().createContextualFragment(ReactDOMServer.renderToString(popupContent))
     );
 
+    // popup_st.innerHTML = 'test';
 
 
-    marker1.setPopup(popup_roadworks1);
-    marker2.setPopup(popup_events1);
+    marker1.setPopup(popup);
 
     return () => {
       marker1.remove();
-      marker2.remove();
       map.remove();
     };
   }, []);
