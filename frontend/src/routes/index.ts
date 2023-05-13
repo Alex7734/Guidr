@@ -42,7 +42,7 @@ const routes: Routes = {
   [Pages.NotFound]: {
     component: asyncComponentLoader(() => import('@/pages/NotFound')),
     path: '*',
-    title: 'Not Found',
+    title: '',
   },
 };
 
