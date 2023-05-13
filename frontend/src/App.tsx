@@ -14,7 +14,7 @@ import Sidebar from '@/sections/Sidebar';
 import Login from './components/LogIn/LogIn';
 import SplashScreen from './components/SplashScreen/SplashScreen';
 import SearchBarTest from './components/SearchBar/SearchbarTest';
-import SearchBar from './components/SearchBar/Searchbar';
+import BurgerMenu from './components/BurgerMenu/BurgerMenu';
 
 
 function App() {

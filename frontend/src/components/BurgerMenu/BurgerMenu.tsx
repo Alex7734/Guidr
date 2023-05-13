@@ -5,9 +5,33 @@ const BurgerMenu: React.FC = () => {
   return (
     <div className={style.burgerMenu}>
       <ul>
-        <li><a href="#">Menu item 1</a></li>
-        <li><a href="#">Menu item 2</a></li>
-        <li><a href="#">Menu item 3</a></li>
+        <li>
+            <a href="#">
+              <div className={style.Bg1}>
+                <img src="images/white_logo.svg" alt="logo" className={style.Logo2} /> 
+              </div>
+            </a>
+        </li>
+        <li><a href="#">
+              <div className={style.Bg2}>
+                <img src="images/party-horn-svgrepo-com.svg" alt="logo" className={style.Logo1} /> 
+              </div>
+            </a></li>
+        <li><a href="#">
+              <div className={style.Bg3}>
+                <img src="images/power-svgrepo-com.svg" alt="logo" className={style.Logo1} /> 
+              </div>
+            </a></li>
+        <li><a href="#">
+              <div className={style.Bg4}>
+                <img src="images/construction-machine-crane-svgrepo-com.svg" alt="logo" className={style.Logo1} /> 
+              </div>
+            </a></li>
+        <li><a href="#">
+              <div className={style.Bg5}>
+                <img src="images/house-svgrepo-com.svg" alt="logo" className={style.Logo1} /> 
+              </div>
+            </a></li>
       </ul>
     </div>
   );
