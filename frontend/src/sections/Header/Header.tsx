@@ -64,14 +64,6 @@ function Header() {
               {title}
             </Button>
           </FlexBox>
-          <FlexBox>
-            <Divider orientation="vertical" flexItem />
-            <Tooltip title="Switch theme" arrow>
-              <IconButton color="info" edge="end" size="large" onClick={themeActions.toggle}>
-                <ThemeIcon />
-              </IconButton>
-            </Tooltip>
-          </FlexBox>
         </Toolbar>
       </AppBar>
     </Box>
