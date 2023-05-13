@@ -28,7 +28,7 @@ class Point(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='points')
     longitude = models.FloatField()
     latitude = models.FloatField()
-    label = models.CharField(max_length=100)
+    label = models.CharField(max_length=100, blank=True)
     isInterestPoint = models.BooleanField(default=False)
 
     def __str__(self):
@@ -36,4 +36,16 @@ class Point(models.Model):
     
     class Meta:
         verbose_name_plural = "Points"
+        ordering = ['id']
+
+class Polygon(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='polygons')
+    label = models.CharField(max_length=100)
+    points = models.TextField(max_length=10000)
+
+    def __str__(self):
+        return f'{self.label} by {self.user.username}'
+    
+    class Meta:
+        verbose_name_plural = "Polygons"
         ordering = ['id']

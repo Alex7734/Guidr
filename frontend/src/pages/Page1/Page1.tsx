@@ -30,19 +30,8 @@ function Page1() {
       const data = draw.getAll();
       console.log('data', data);
       setPolygonData(data); // Save polygon data to state
-      const answer = document.getElementById('calculated-area');
-      if (data.features.length > 0) {
-        const area = turf.area(data);
-        if (answer)
-          answer.innerHTML = `<p><strong>${JSON.stringify(data)}</strong></p><p>${JSON.stringify(
-            polygonData,
-          )}</p>`;
-      } else {
-        if (answer) answer.innerHTML = '';
-        if (e.type !== 'draw.delete') alert('Click the map to draw a polygon.');
-      }
     },
-    [polygonData],
+    [],
   );
 
   useEffect(() => {
@@ -72,7 +61,6 @@ function Page1() {
     });
 
     map.addControl(draw);
-
     map.on('draw.create', (e) => updateArea(e, draw));
     map.on('draw.delete', (e) => updateArea(e, draw));
     map.on('draw.update', (e) => updateArea(e, draw));
@@ -88,6 +76,12 @@ function Page1() {
       </Typography>
       <div ref={mapContainer} style={{ width: '100%', height: '400px' }} />
       <div id="calculated-area" />
+      {polygonData && (
+        <div>
+          <h2>Polygon Data:</h2>
+          <pre>{JSON.stringify(polygonData, null, 2)}</pre>
+        </div>
+      )}
     </>
   );
 }
