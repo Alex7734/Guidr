@@ -24,8 +24,8 @@ function AreasScreen() {
         <div className={styler.Collapsible2}>
           <Collapsible content='Work'>
             <ul>
-              <li>Area 1</li>
-              <li>Area 2</li>
+              <li>Area 3</li>
+              <li>Area 4</li>
             </ul>
           </Collapsible>
         </div>

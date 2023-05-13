@@ -43,16 +43,127 @@
     left: 45%;
 }
 
-.Collapsible{
+.ContainerSwitch{
     position: fixed;
     top: 40%;
-    flex-direction: row;
+    left: 10%;
     display: flex;
+    flex-direction: row;
+    width: 366px;
+    height: 66px;
+    background-color:  #FAFEFE;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 3px 12px 2px #A6CBEB;
 }
 
-.Collapsible2{
+.Switch{
+    position: fixed;
+    margin-top: 8px;
+    left: 75%;
+}
+
+.ContainerSwitch2{
+    position: fixed;
+    top: 55%;
+    left: 10%;
+    display: flex;
+    flex-direction: row;
+    width: 366px;
+    height: 66px;
+    background-color:  #FAFEFE;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 3px 12px 2px #A6CBEB;
+}
+
+.Switch2{
+    position: fixed;
+    margin-top: 8px;
+    left: 75%;
+}
+
+.Text3{
+    font-family: Nunito, sans-serif;
+    color: #6177EF;
+    position: fixed;
+    font-size: 150%;
+    top: 39%;
+    left: 15%;
+}
+
+.ContainerSwitch3{
     position: fixed;
     top: 70%;
-    flex-direction: row;
+    left: 10%;
     display: flex;
+    flex-direction: row;
+    width: 366px;
+    height: 66px;
+    background-color:  #FAFEFE;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 3px 12px 2px #A6CBEB;
 }
+
+.Switch3{
+    position: fixed;
+    margin-top: 8px;
+    background-color: none;
+    left: 75%;
+}
+
+.Text4{
+    font-family: Nunito, sans-serif;
+    color: #6177EF;
+    position: fixed;
+    font-size: 120%;
+    top: 55%;
+    left: 15%;
+}
+
+.ContainerSwitch4{
+    position: fixed;
+    top: 85%;
+    left: 10%;
+    display: flex;
+    flex-direction: row;
+    width: 366px;
+    height: 66px;
+    background-color:  #FAFEFE;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 3px 12px 2px #A6CBEB;
+}
+
+.Switch4{
+    position: fixed;
+    margin-top: 8px;
+    left: 75%;
+}
+
+.Text5{
+    font-family: Nunito, sans-serif;
+    color: #6177EF;
+    position: fixed;
+    font-size: 150%;
+    top: 69%;
+    left: 15%;
+}
+

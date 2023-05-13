@@ -38,6 +38,6 @@
   }
   
   input[type='checkbox']:checked + .switch {
-    background-color: green;
+    background-color: #6177ef;
   }
   
