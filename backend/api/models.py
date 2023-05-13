@@ -28,6 +28,7 @@ class Point(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='points')
     longitude = models.FloatField()
     latitude = models.FloatField()
+    label = models.CharField(max_length=100)
     isInterestPoint = models.BooleanField(default=False)
 
     def __str__(self):
