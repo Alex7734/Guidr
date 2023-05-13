@@ -9,6 +9,7 @@ enum Pages {
   Page2,
   Page3,
   NotFound,
+  AreasScreen,
 }
 
 type PathRouteCustomProps = {
