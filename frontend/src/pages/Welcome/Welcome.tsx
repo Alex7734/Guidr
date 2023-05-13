@@ -9,7 +9,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import ReactDOMServer from 'react-dom/server';
 import { borderRadius } from '@mui/system';
 import SearchBar from '@/components/SearchBar/Searchbar';
-import BurgerMenu from '@/components/BurgerMenu/BurgerMenu';
+import BurgerMenu from '@/components/FloatingMenu/FloatingMenu';
 
 mapboxgl.accessToken =
   'pk.eyJ1IjoidHVkb3I5MDAiLCJhIjoiY2xoa3cyb292MHc1aDNucXB5cnJmOWdtMCJ9.-WGWKDZihxwHtun9LaZWTw';
@@ -19,48 +19,8 @@ const Map = () => {
   const [lng, setLng] = useState(21.22571);
   const [lat, setLat] = useState(45.75372);
   const [zoom, setZoom] = useState(13);
-  const [pointsData, setPointsData] = useState([]);
-
-  const bounds = [
-    [21.148834380930737,45.70095987580634],
-    [21.319834380930737,45.80095987580634]
-  ] as mapboxgl.LngLatBoundsLike;
-
-  useEffect(() => {
-    const points = localStorage.getItem('pointsData');
-    if (points) {
-      setPointsData(JSON.parse(points));
-    }
-  }, []);
-
-  useEffect(() => {
-    if (!mapContainer.current) return;
-
-    const map = new mapboxgl.Map({
-      container: mapContainer.current,
-      style: 'mapbox://styles/mapbox/light-v11',
-      center: [lng, lat],
-      zoom: zoom,
-      maxBounds: bounds,
-    });
-
-    pointsData.forEach((point) => {
-      if (point.location) {
-        const el = document.createElement('div');
-        el.className = 'marker';
-        el.style.backgroundColor = 'red';
-        el.style.width = '10px';
-        el.style.height = '10px';
-        el.style.borderRadius = '50%';
-    
-        new mapboxgl.Marker(el)
-          .setLngLat(point.location.coordinates)
-          .addTo(map);
-      }
-    });
-    
-
-  }, [pointsData]);
+ 
+ 
   
   //wraper is style pentru logoMarker_roadworks
   const logoMarker_roadworks_wrapper = document.createElement('div');
@@ -91,7 +51,11 @@ const Map = () => {
     </div>
   );
   
-
+ 
+  const bounds = [
+    [21.148834380930737,45.70095987580634],
+    [21.319834380930737,45.80095987580634]
+  ]as mapboxgl.LngLatBoundsLike;
 
   useEffect(() => {
     if (!mapContainer.current) return;
