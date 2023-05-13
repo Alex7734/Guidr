@@ -13,7 +13,7 @@ interface IProps {
 }
 
 const Collapsible: React.FC<IProps> = ({ open, children, content }: IProps) => {
-  const [isOpen, setIsOpen] = useState<boolean>(open || false);
+  const [isOpen, setIsOpen] = useState<boolean>(open ?? true);
 
   const handleFilterOpening = () => {
     setIsOpen((prev: boolean) => !prev);
