@@ -46,6 +46,8 @@ const Map = () => {
       setZoom(parseFloat(map.getZoom().toFixed(2)));
     });
 
+    map.setMinZoom(11.01);
+
     const marker1 = new mapboxgl.Marker().setLngLat([21.240408, 45.745693]).addTo(map);
 
     const popup = new mapboxgl.Popup({ closeOnClick: true, closeButton: true }).setHTML(
