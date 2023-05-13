@@ -68,6 +68,11 @@
     font-family: Nunito, sans-serif;
   }
 
+  input[type="text"]::placeholder, input[type="password"]::placeholder{
+    filter: opacity(0.3);
+    color: #6177EF;
+  }
+
   .loginButton{
     font-family: Nunito, sans-serif;
     border-top-left-radius: 30px;
