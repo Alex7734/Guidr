@@ -109,7 +109,7 @@ const Map = () => {
       <SearchBar onSearch={function (searchTerm: string): void {
                 throw new Error('Function not implemented.');
       } } />
-      <div ref={mapContainer} style={{ position: 'fixed', top: 55, left: 0, right: 0, bottom: 0 }} />
+      <div ref={mapContainer} style={{ position: 'fixed', top:0, left: 0, right: 0, bottom: 0 }} />
       <BurgerMenu />
     </div>
   );
