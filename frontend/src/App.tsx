@@ -17,7 +17,6 @@ import SearchBarTest from './components/SearchBar/SearchbarTest';
 import SearchBar from './components/SearchBar/Searchbar';
 import BurgerMenu from './components/BurgerMenu/BurgerMenu';
 
-
 function App() {
   const [showSplashScreen, setShowSplashScreen] = React.useState(true);
 
