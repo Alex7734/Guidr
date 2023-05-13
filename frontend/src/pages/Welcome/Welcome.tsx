@@ -2,10 +2,12 @@ import { useEffect, useRef, useState } from 'react';
 
 import MapboxDraw from '@mapbox/mapbox-gl-draw';
 import '@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css';
-import turf from '@turf/turf';
+import turf, { center } from '@turf/turf';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import ReactDOMServer from 'react-dom/server';
+import { borderRadius } from '@mui/system';
 
 mapboxgl.accessToken =
   'pk.eyJ1IjoidHVkb3I5MDAiLCJhIjoiY2xoa3cyb292MHc1aDNucXB5cnJmOWdtMCJ9.-WGWKDZihxwHtun9LaZWTw';
@@ -15,6 +17,39 @@ const Map = () => {
   const [lng, setLng] = useState(21.22571);
   const [lat, setLat] = useState(45.75372);
   const [zoom, setZoom] = useState(13);
+ 
+ 
+  
+  //wraper is style pentru logoMarker_roadworks
+  const logoMarker_roadworks_wrapper = document.createElement('div');
+  logoMarker_roadworks_wrapper.style.backgroundColor = '#ed6e6d';
+  logoMarker_roadworks_wrapper.style.borderRadius = '70%';
+  logoMarker_roadworks_wrapper.style.width = '40px';  
+  logoMarker_roadworks_wrapper.style.height = '40px'; 
+  logoMarker_roadworks_wrapper.style.display = 'flex';
+  logoMarker_roadworks_wrapper.style.justifyContent = 'center';
+  logoMarker_roadworks_wrapper.style.alignItems = 'center';
+  const logoMarker_roadworks = document.createElement('div'); 
+  logoMarker_roadworks.className = 'logoMarker_roadworks';
+  logoMarker_roadworks.style.backgroundImage = 'url(public/images/construction-machine-crane-svgrepo-com.svg';
+  logoMarker_roadworks.style.width = '30px';
+  logoMarker_roadworks.style.height = '30px';  
+
+  logoMarker_roadworks_wrapper.appendChild(logoMarker_roadworks);
+  //end of wraper is style pentru logoMarker_roadworks
+
+
+  const popup_st= document.createElement('div');
+
+
+  const popupContent = (
+    <div style={{ width: '200px', height: '100px' }}>
+      <h3 style={{ color: '#9E5454', margin: 0, textAlign: 'center', fontSize: '25px', lineHeight: '34px', fontWeight: '700', fontFamily: 'url(Guidr/frontend/public/Nunito/Nunito-VariableFont_wght.ttf)', fontStyle: 'normal' }}>Craft</h3>
+      <p style={{ color: '#BB9E9E', margin: 0, textAlign: 'center', fontSize: '16px', lineHeight: '17px', fontWeight: '500', fontFamily: 'url(Guidr/frontend/public/Nunito/Nunito-VariableFont_wght.ttf)', fontStyle: 'normal' }}>This is the Centrul Regional de Afaceri Timisoara</p>
+    </div>
+  );
+  
+ 
   const bounds = [
     [21.148834380930737,45.70095987580634],
     [21.319834380930737,45.80095987580634]
@@ -48,11 +83,13 @@ const Map = () => {
 
     map.setMinZoom(11.01);
 
-    const marker1 = new mapboxgl.Marker().setLngLat([21.240408, 45.745693]).addTo(map);
+    const marker1 = new mapboxgl.Marker({element: logoMarker_roadworks_wrapper}).setLngLat([21.240408, 45.745693]).addTo(map);
 
-    const popup = new mapboxgl.Popup({ closeOnClick: true, closeButton: true }).setHTML(
-      '<h3 style="color:black;">Marker 1</h3><p style="color:black;">This is marker 1</p>',
+    const popup = new mapboxgl.Popup({ closeOnClick: true, closeButton: true}).setDOMContent(document.createRange().createContextualFragment(ReactDOMServer.renderToString(popupContent))
     );
+
+    // popup_st.innerHTML = 'test';
+
 
     marker1.setPopup(popup);
 
