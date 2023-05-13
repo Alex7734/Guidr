@@ -15,6 +15,10 @@ const Map = () => {
   const [lng, setLng] = useState(21.22571);
   const [lat, setLat] = useState(45.75372);
   const [zoom, setZoom] = useState(13);
+  const bounds = [
+    [21.148834380930737,45.70095987580634],
+    [21.319834380930737,45.80095987580634]
+  ]as mapboxgl.LngLatBoundsLike;
 
   useEffect(() => {
     if (!mapContainer.current) return;
@@ -24,6 +28,7 @@ const Map = () => {
       style: 'mapbox://styles/mapbox/streets-v12',
       center: [lng, lat],
       zoom: zoom,
+      maxBounds: bounds, 
     });
 
     const draw = new MapboxDraw({
