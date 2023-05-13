@@ -14,6 +14,7 @@ import Sidebar from '@/sections/Sidebar';
 import Login from './components/LogIn/LogIn';
 import SplashScreen from './components/SplashScreen/SplashScreen';
 import SearchBar from './components/SearchBar/Searchbar';
+import MenuButton from './components/MenuButton/MenuButton';
 
 function App() {
   const [showSplashScreen, setShowSplashScreen] = React.useState(true);
@@ -37,12 +38,13 @@ function App() {
           <Fragment>
             <Notifications />
             <SW />
+            
             <BrowserRouter>
-              <SearchBar onSearch={function (searchTerm: string): void {
-                throw new Error('Function not implemented.');
-              } } />
+              
               <Sidebar />
+              
               <Pages />
+              
             </BrowserRouter>
           </Fragment>
         ) : ( <Login onLogin={handleLogin} /> )}
