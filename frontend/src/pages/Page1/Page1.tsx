@@ -147,7 +147,8 @@ function Page1() {
       <BottomMenu />
       <div ref={mapContainer} style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }} />
       <PolygonDataModal isModalOpen={isModalOpen} onClose={closeModal} polygonData={polygonData} />
-      {!isModalOpen && <AnalyticsModal isModalOpen={isAnalyticsModalOpen} onClose={closeAnalyticsModal} />}
+      {/*{!isModalOpen && <AnalyticsModal isModalOpen={isAnalyticsModalOpen} onClose={closeAnalyticsModal} />}*/}
+      {/* Keep this like this until I come back, it breaks the app */}
     </>
   );
 }
