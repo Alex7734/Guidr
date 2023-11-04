@@ -29,8 +29,6 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
         <img className = {styles.logo} src="/images/blue_text.svg" alt="Logo" />
         <form onSubmit={handleLogin}>
           <div className="formgroup">
-            <FontAwesomeIcon icon={faUser} className={styles.icon} />
-            <FontAwesomeIcon icon={faLock} className={styles.icon2} />
             <input
               className={styles.input}
               type="text"

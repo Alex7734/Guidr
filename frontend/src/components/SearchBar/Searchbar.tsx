@@ -1,58 +1,22 @@
-import { useState } from "react";
-import { FaBars, FaSearch } from "react-icons/fa";
 import "./Searchbar.css";
-import zIndex from "@mui/material/styles/zIndex";
-import Sidebar from "@/sections/Sidebar";
-import useSidebar from "@/store/sidebar";
 import MenuButton from "@/components/MenuButton/MenuButton";
+import useSidebar from "@/store/sidebar";
 
+const SearchBar = () => {
+  const [, sidebarActions] = useSidebar();
 
-interface SearchBarProps {
-  onSearch: (searchTerm: string) => void;
-}
-
-const SearchBar = ({ onSearch }: SearchBarProps) => {
-  const [searchTerm, setSearchTerm] = useState("");
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(event.target.value);
-  };
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    onSearch(searchTerm);
-  };
   return (
     <div style={{
       position: "fixed",
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      marginLeft: -30,
-      zIndex: "4", // set a high z-index value
-    }}> 
+      marginTop: '10px',
+      zIndex: "4"
+    }} onClick={sidebarActions.toggle}>
     <div className="search-bar-container">
-    <MenuButton />
-
-  <div className="search-bar">
-  <div className="search-icon">
-        <FaSearch size={30} color="#6177EF" />
-      </div>
-      
-    <form onSubmit={handleSubmit} style={{ flex: "1", border: "none" }}>
-      
-      <input
-        type="text"
-        value={searchTerm}
-        onChange={handleInputChange}
-        placeholder="Search"
-        className="search-input"
-      />
-    </form>
-    
-  </div>
-  
-</div>
+      <MenuButton />
+    </div>
 </div>
   );
 };
